@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>  
+	<AddIn Type="Application">
+		<Name>PluginConfiguration</Name>
+		<Assembly>PluginConfiguration.dll</Assembly>
+		<FullClassName>PluginConfiguration.App</FullClassName>
+		<ClientId>F7D82D64-3E1A-4266-ABAF-6587D9E61F20</ClientId>
+		<VendorId>BOLDstd</VendorId>
+		<VendorDescription>BOLDstd, http://boldstd.it/ </VendorDescription>
+	</AddIn>
+	<!--<AddIn Type="Command">
+		<Text>Command PluginConfiguration</Text>
+		<Description>Some description for ModelessForm_ExternalEvent</Description>
+		<Assembly>Configuration.dll</Assembly>
+		<FullClassName>PluginConfiguration.Command</FullClassName>
+		<ClientId>C89FA47C-BE8B-46D7-AB82-002322A86EB7</ClientId>
+		<VendorId>BOLDstd</VendorId>
+		<VendorDescription>BOLDstd, http://boldstd.it/ </VendorDescription>
+	</AddIn>-->	
+</RevitAddIns>

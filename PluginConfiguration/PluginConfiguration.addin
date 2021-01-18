@@ -4,7 +4,7 @@
 		<Name>PluginConfiguration</Name>
 		<Assembly>PluginConfiguration.dll</Assembly>
 		<FullClassName>PluginConfiguration.App</FullClassName>
-		<ClientId>F7D82D64-3E1A-4266-ABAF-6587D9E61F20</ClientId>
+		<ClientId>BA2E663D-EFAF-4E11-B304-923314D8817D</ClientId>
 		<VendorId>BOLDstd</VendorId>
 		<VendorDescription>BOLDstd, http://boldstd.it/ </VendorDescription>
 	</AddIn>

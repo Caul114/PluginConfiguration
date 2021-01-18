@@ -102,7 +102,7 @@
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModelessForm_ExternalEvent_base.addin">
+    <Content Include="PluginConfiguration.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\code-small.png" />

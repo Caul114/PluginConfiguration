@@ -129,9 +129,9 @@ namespace PluginConfiguration
             this.tabPage1commesseFileLabel.AutoSize = true;
             this.tabPage1commesseFileLabel.Location = new System.Drawing.Point(25, 26);
             this.tabPage1commesseFileLabel.Name = "tabPage1commesseFileLabel";
-            this.tabPage1commesseFileLabel.Size = new System.Drawing.Size(261, 17);
+            this.tabPage1commesseFileLabel.Size = new System.Drawing.Size(363, 21);
             this.tabPage1commesseFileLabel.TabIndex = 6;
-            this.tabPage1commesseFileLabel.Text = "Percorso di default per il File Commesse";
+            this.tabPage1commesseFileLabel.Text = "Percorso di default del File di Configurazione";
             // 
             // tabPage1dirImagesButton
             // 
@@ -155,9 +155,9 @@ namespace PluginConfiguration
             this.tabPage1dirImagesLabel.AutoSize = true;
             this.tabPage1dirImagesLabel.Location = new System.Drawing.Point(25, 157);
             this.tabPage1dirImagesLabel.Name = "tabPage1dirImagesLabel";
-            this.tabPage1dirImagesLabel.Size = new System.Drawing.Size(278, 17);
+            this.tabPage1dirImagesLabel.Size = new System.Drawing.Size(383, 21);
             this.tabPage1dirImagesLabel.TabIndex = 3;
-            this.tabPage1dirImagesLabel.Text = "Percorso di default per la Cartella Immagini";
+            this.tabPage1dirImagesLabel.Text = "Percorso di default della Cartella delle Immagini";
             // 
             // tabPage1excelDistintaButton
             // 
@@ -181,9 +181,9 @@ namespace PluginConfiguration
             this.tabPage1excelDistintaLabel.AutoSize = true;
             this.tabPage1excelDistintaLabel.Location = new System.Drawing.Point(25, 91);
             this.tabPage1excelDistintaLabel.Name = "tabPage1excelDistintaLabel";
-            this.tabPage1excelDistintaLabel.Size = new System.Drawing.Size(276, 17);
+            this.tabPage1excelDistintaLabel.Size = new System.Drawing.Size(388, 21);
             this.tabPage1excelDistintaLabel.TabIndex = 0;
-            this.tabPage1excelDistintaLabel.Text = "Percorso di default per il File Distinta Excel";
+            this.tabPage1excelDistintaLabel.Text = "Percorso di default del File BOLD_Distinta Excel";
             // 
             // tabPage2
             // 
@@ -232,9 +232,9 @@ namespace PluginConfiguration
             this.tabPage2commesseFileLabel.AutoSize = true;
             this.tabPage2commesseFileLabel.Location = new System.Drawing.Point(25, 27);
             this.tabPage2commesseFileLabel.Name = "tabPage2commesseFileLabel";
-            this.tabPage2commesseFileLabel.Size = new System.Drawing.Size(261, 17);
+            this.tabPage2commesseFileLabel.Size = new System.Drawing.Size(363, 21);
             this.tabPage2commesseFileLabel.TabIndex = 21;
-            this.tabPage2commesseFileLabel.Text = "Percorso di default per il File Commesse";
+            this.tabPage2commesseFileLabel.Text = "Percorso di default del File di Configurazione";
             // 
             // tabPage2utilitiesButton
             // 
@@ -258,9 +258,9 @@ namespace PluginConfiguration
             this.tabPage2utilitiesLabel.AutoSize = true;
             this.tabPage2utilitiesLabel.Location = new System.Drawing.Point(25, 305);
             this.tabPage2utilitiesLabel.Name = "tabPage2utilitiesLabel";
-            this.tabPage2utilitiesLabel.Size = new System.Drawing.Size(384, 17);
+            this.tabPage2utilitiesLabel.Size = new System.Drawing.Size(473, 21);
             this.tabPage2utilitiesLabel.TabIndex = 18;
-            this.tabPage2utilitiesLabel.Text = "Percorso di default per la Cartella dei File utili al programma";
+            this.tabPage2utilitiesLabel.Text = "Percorso di default della Cartella dei File utili al programma";
             // 
             // tabPage2modifyFileButton
             // 
@@ -284,9 +284,9 @@ namespace PluginConfiguration
             this.tabPage2modifyFileLabel.AutoSize = true;
             this.tabPage2modifyFileLabel.Location = new System.Drawing.Point(25, 234);
             this.tabPage2modifyFileLabel.Name = "tabPage2modifyFileLabel";
-            this.tabPage2modifyFileLabel.Size = new System.Drawing.Size(273, 17);
+            this.tabPage2modifyFileLabel.Size = new System.Drawing.Size(330, 21);
             this.tabPage2modifyFileLabel.TabIndex = 15;
-            this.tabPage2modifyFileLabel.Text = "Percorso di default per i File .rfa modificati";
+            this.tabPage2modifyFileLabel.Text = "Percorso di default dei File .rfa modificati";
             // 
             // tabPage2imagesDirButton
             // 
@@ -310,9 +310,9 @@ namespace PluginConfiguration
             this.tabPage2imagesDirLabel.AutoSize = true;
             this.tabPage2imagesDirLabel.Location = new System.Drawing.Point(25, 164);
             this.tabPage2imagesDirLabel.Name = "tabPage2imagesDirLabel";
-            this.tabPage2imagesDirLabel.Size = new System.Drawing.Size(398, 17);
+            this.tabPage2imagesDirLabel.Size = new System.Drawing.Size(490, 21);
             this.tabPage2imagesDirLabel.TabIndex = 12;
-            this.tabPage2imagesDirLabel.Text = "Percorso di default per la Cartella delle Immagini delle famiglie";
+            this.tabPage2imagesDirLabel.Text = "Percorso di default della Cartella delle Immagini delle famiglie";
             // 
             // tabPage2familyDirButton
             // 
@@ -336,9 +336,9 @@ namespace PluginConfiguration
             this.tabPage2familyDirLabel.AutoSize = true;
             this.tabPage2familyDirLabel.Location = new System.Drawing.Point(25, 93);
             this.tabPage2familyDirLabel.Name = "tabPage2familyDirLabel";
-            this.tabPage2familyDirLabel.Size = new System.Drawing.Size(293, 17);
+            this.tabPage2familyDirLabel.Size = new System.Drawing.Size(359, 21);
             this.tabPage2familyDirLabel.TabIndex = 9;
-            this.tabPage2familyDirLabel.Text = "Percorso di default per la Cartella dei File .rfa";
+            this.tabPage2familyDirLabel.Text = "Percorso di default della Cartella dei File .rfa";
             // 
             // openFileDialog1
             // 

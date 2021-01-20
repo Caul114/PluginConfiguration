@@ -203,9 +203,9 @@ namespace PluginConfiguration
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "Config";
-            this.openFileDialog1.Filter = "File Excel (*.xlsm)|*.xlsm|All files (*.*)|*.*";
-            this.openFileDialog1.InitialDirectory = "C:\\Users\\Bold\\Documents\\Bold Software\\Config";
+            this.openFileDialog1.FileName = "Config.xlsx";
+            this.openFileDialog1.Filter = "File Excel (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+            this.openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Bold Software\\Config";
             // 
             // folderBrowserDialog2
             // 
@@ -220,7 +220,7 @@ namespace PluginConfiguration
             // openFileDialog2
             // 
             this.openFileDialog2.DefaultExt = "xlsm";
-            this.openFileDialog2.FileName = "AbacoCells";
+            this.openFileDialog2.FileName = "AbacoCells.xlsm";
             this.openFileDialog2.Filter = "File Excel (*.xlsm)|*.xlsm|All files (*.*)|*.*";
             // 
             // ModelessForm

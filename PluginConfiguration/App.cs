@@ -51,7 +51,7 @@ namespace PluginConfiguration
                 // ToolTip mostrato
                 button.ToolTip = "Plug-in Configuration";
                 // Icona del Button
-                Uri uriImage = new Uri(@"C:\DatiLDB\Progetti_REVIT\16.Configuration_Bold_Plugin\PluginConfiguration\PluginConfiguration\Resources\revit_small.png");
+                Uri uriImage = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Bold Software\Config\Icon\revit_small.png");
                 BitmapImage image = new BitmapImage(uriImage);
                 button.LargeImage = image;
             };
@@ -146,7 +146,7 @@ namespace PluginConfiguration
         public RibbonPanel RibbonPanel(UIControlledApplication uiapp)
         {
             // Nome del Tab
-            string tab = "Bold";
+            string tab = "BOLD";
 
             // Dichiara e inizializza un RibbonPanel vuoto
             RibbonPanel ribbonPanel = null;

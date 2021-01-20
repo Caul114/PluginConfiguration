@@ -215,7 +215,7 @@ namespace PluginConfiguration
         /// 
         private string GetPathConfig()
         {
-            _pathConfig = @"C:\Users\Bold\Documents\Bold Software\Config\Config.xlsm";
+            _pathConfig = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Bold Software\Config\Config.xlsx";
             return _pathConfig;
         }
 

@@ -241,7 +241,7 @@ namespace PluginConfiguration
 
 
         /// <summary>
-        ///   Pulsante per la modifica del Path relativo COMMESSE DATACELL
+        ///   Pulsante per la modifica del Path relativo a CONFIG DATACELL
         /// </summary>
         /// 
         private void tabPage1commesseFileButton_Click(object sender, EventArgs e)
@@ -266,7 +266,7 @@ namespace PluginConfiguration
         }
 
         /// <summary>
-        ///   Pulsante per la modifica del Path relativo alla cartella DATACELL
+        ///   Pulsante per la modifica del Path relativo alla cartella DATACELL e degli altri valori relativi
         /// </summary>
         /// 
         private void tabPage1fileDataCellButton_Click(object sender, EventArgs e)
@@ -343,7 +343,7 @@ namespace PluginConfiguration
        
 
         /// <summary>
-        ///   Metodo che Importa il foglio Excel per ottenre i dati contenuti in alcune sue celle
+        ///   Metodo che Importa il foglio Excel per ottenere i dati contenuti in alcune sue celle
         /// </summary>
         ///         
         public void GetDataFromExcel(string selectedItem, string path)
@@ -533,7 +533,7 @@ namespace PluginConfiguration
 
         /// <summary>
         ///   Metodo che chiude tutti i processi Excel attivi
-        /// 
+        /// </summary>
         static void KillExcel()
         {
             Process[] AllProcesses = Process.GetProcessesByName("excel");

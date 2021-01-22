@@ -95,7 +95,6 @@ namespace PluginConfiguration
                         }
                     case RequestId.Id:
                         {
-
                             break;
                         }
                     default:

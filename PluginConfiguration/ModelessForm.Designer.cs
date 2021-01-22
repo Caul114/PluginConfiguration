@@ -36,6 +36,7 @@ namespace PluginConfiguration
             this.exitButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabPage1fileDataCellButton = new System.Windows.Forms.Button();
             this.tabPage1fileDataCellTextBox = new System.Windows.Forms.TextBox();
             this.tabPage1fileDataCellLabel = new System.Windows.Forms.Label();
@@ -58,9 +59,9 @@ namespace PluginConfiguration
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(683, 473);
+            this.exitButton.Location = new System.Drawing.Point(683, 471);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(75, 23);
+            this.exitButton.Size = new System.Drawing.Size(75, 37);
             this.exitButton.TabIndex = 0;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
@@ -77,6 +78,7 @@ namespace PluginConfiguration
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.tabPage1fileDataCellButton);
             this.tabPage1.Controls.Add(this.tabPage1fileDataCellTextBox);
             this.tabPage1.Controls.Add(this.tabPage1fileDataCellLabel);
@@ -97,9 +99,19 @@ namespace PluginConfiguration
             this.tabPage1.Text = "DataCell";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(26, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(500, 17);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "(Modifica queste Configurazioni solo se sei sicuro di impostarle correttamente)";
+            // 
             // tabPage1fileDataCellButton
             // 
-            this.tabPage1fileDataCellButton.Location = new System.Drawing.Point(681, 117);
+            this.tabPage1fileDataCellButton.Location = new System.Drawing.Point(681, 152);
             this.tabPage1fileDataCellButton.Name = "tabPage1fileDataCellButton";
             this.tabPage1fileDataCellButton.Size = new System.Drawing.Size(30, 23);
             this.tabPage1fileDataCellButton.TabIndex = 11;
@@ -109,7 +121,7 @@ namespace PluginConfiguration
             // 
             // tabPage1fileDataCellTextBox
             // 
-            this.tabPage1fileDataCellTextBox.Location = new System.Drawing.Point(28, 117);
+            this.tabPage1fileDataCellTextBox.Location = new System.Drawing.Point(28, 152);
             this.tabPage1fileDataCellTextBox.Name = "tabPage1fileDataCellTextBox";
             this.tabPage1fileDataCellTextBox.Size = new System.Drawing.Size(647, 22);
             this.tabPage1fileDataCellTextBox.TabIndex = 10;
@@ -117,7 +129,7 @@ namespace PluginConfiguration
             // tabPage1fileDataCellLabel
             // 
             this.tabPage1fileDataCellLabel.AutoSize = true;
-            this.tabPage1fileDataCellLabel.Location = new System.Drawing.Point(25, 93);
+            this.tabPage1fileDataCellLabel.Location = new System.Drawing.Point(25, 128);
             this.tabPage1fileDataCellLabel.Name = "tabPage1fileDataCellLabel";
             this.tabPage1fileDataCellLabel.Size = new System.Drawing.Size(270, 17);
             this.tabPage1fileDataCellLabel.TabIndex = 9;
@@ -125,7 +137,7 @@ namespace PluginConfiguration
             // 
             // tabPage1commesseFileButton
             // 
-            this.tabPage1commesseFileButton.Location = new System.Drawing.Point(681, 50);
+            this.tabPage1commesseFileButton.Location = new System.Drawing.Point(681, 85);
             this.tabPage1commesseFileButton.Name = "tabPage1commesseFileButton";
             this.tabPage1commesseFileButton.Size = new System.Drawing.Size(30, 23);
             this.tabPage1commesseFileButton.TabIndex = 8;
@@ -135,7 +147,7 @@ namespace PluginConfiguration
             // 
             // tabPage1commesseFileTextBox
             // 
-            this.tabPage1commesseFileTextBox.Location = new System.Drawing.Point(28, 50);
+            this.tabPage1commesseFileTextBox.Location = new System.Drawing.Point(28, 85);
             this.tabPage1commesseFileTextBox.Name = "tabPage1commesseFileTextBox";
             this.tabPage1commesseFileTextBox.Size = new System.Drawing.Size(647, 22);
             this.tabPage1commesseFileTextBox.TabIndex = 7;
@@ -143,7 +155,7 @@ namespace PluginConfiguration
             // tabPage1commesseFileLabel
             // 
             this.tabPage1commesseFileLabel.AutoSize = true;
-            this.tabPage1commesseFileLabel.Location = new System.Drawing.Point(25, 26);
+            this.tabPage1commesseFileLabel.Location = new System.Drawing.Point(25, 61);
             this.tabPage1commesseFileLabel.Name = "tabPage1commesseFileLabel";
             this.tabPage1commesseFileLabel.Size = new System.Drawing.Size(290, 17);
             this.tabPage1commesseFileLabel.TabIndex = 6;
@@ -151,7 +163,7 @@ namespace PluginConfiguration
             // 
             // tabPage1dirImagesButton
             // 
-            this.tabPage1dirImagesButton.Location = new System.Drawing.Point(682, 252);
+            this.tabPage1dirImagesButton.Location = new System.Drawing.Point(682, 287);
             this.tabPage1dirImagesButton.Name = "tabPage1dirImagesButton";
             this.tabPage1dirImagesButton.Size = new System.Drawing.Size(30, 23);
             this.tabPage1dirImagesButton.TabIndex = 5;
@@ -161,7 +173,7 @@ namespace PluginConfiguration
             // 
             // tabPage1dirImagesTextBox
             // 
-            this.tabPage1dirImagesTextBox.Location = new System.Drawing.Point(29, 252);
+            this.tabPage1dirImagesTextBox.Location = new System.Drawing.Point(29, 287);
             this.tabPage1dirImagesTextBox.Name = "tabPage1dirImagesTextBox";
             this.tabPage1dirImagesTextBox.Size = new System.Drawing.Size(647, 22);
             this.tabPage1dirImagesTextBox.TabIndex = 4;
@@ -169,7 +181,7 @@ namespace PluginConfiguration
             // tabPage1dirImagesLabel
             // 
             this.tabPage1dirImagesLabel.AutoSize = true;
-            this.tabPage1dirImagesLabel.Location = new System.Drawing.Point(26, 228);
+            this.tabPage1dirImagesLabel.Location = new System.Drawing.Point(26, 263);
             this.tabPage1dirImagesLabel.Name = "tabPage1dirImagesLabel";
             this.tabPage1dirImagesLabel.Size = new System.Drawing.Size(306, 17);
             this.tabPage1dirImagesLabel.TabIndex = 3;
@@ -177,7 +189,7 @@ namespace PluginConfiguration
             // 
             // tabPage1excelDistintaButton
             // 
-            this.tabPage1excelDistintaButton.Location = new System.Drawing.Point(682, 185);
+            this.tabPage1excelDistintaButton.Location = new System.Drawing.Point(682, 220);
             this.tabPage1excelDistintaButton.Name = "tabPage1excelDistintaButton";
             this.tabPage1excelDistintaButton.Size = new System.Drawing.Size(30, 23);
             this.tabPage1excelDistintaButton.TabIndex = 2;
@@ -187,7 +199,7 @@ namespace PluginConfiguration
             // 
             // tabPage1excelDistintaTextBox
             // 
-            this.tabPage1excelDistintaTextBox.Location = new System.Drawing.Point(29, 185);
+            this.tabPage1excelDistintaTextBox.Location = new System.Drawing.Point(29, 220);
             this.tabPage1excelDistintaTextBox.Name = "tabPage1excelDistintaTextBox";
             this.tabPage1excelDistintaTextBox.Size = new System.Drawing.Size(647, 22);
             this.tabPage1excelDistintaTextBox.TabIndex = 1;
@@ -195,17 +207,17 @@ namespace PluginConfiguration
             // tabPage1excelDistintaLabel
             // 
             this.tabPage1excelDistintaLabel.AutoSize = true;
-            this.tabPage1excelDistintaLabel.Location = new System.Drawing.Point(26, 161);
+            this.tabPage1excelDistintaLabel.Location = new System.Drawing.Point(26, 196);
             this.tabPage1excelDistintaLabel.Name = "tabPage1excelDistintaLabel";
-            this.tabPage1excelDistintaLabel.Size = new System.Drawing.Size(310, 17);
+            this.tabPage1excelDistintaLabel.Size = new System.Drawing.Size(287, 17);
             this.tabPage1excelDistintaLabel.TabIndex = 0;
-            this.tabPage1excelDistintaLabel.Text = "Percorso di default del File BOLD_Distinta Excel";
+            this.tabPage1excelDistintaLabel.Text = "Percorso di default del File AbacoCells Excel";
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "Config.xlsx";
             this.openFileDialog1.Filter = "File Excel (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-            this.openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Bold Software\\Config";
+            this.openFileDialog1.InitialDirectory = "C:\\Users\\Bold\\Documents\\Bold Software\\Config";
             // 
             // folderBrowserDialog2
             // 
@@ -231,6 +243,7 @@ namespace PluginConfiguration
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.exitButton);
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ModelessForm";
             this.Text = "BOLD Configuration";
             this.Load += new System.EventHandler(this.ModelessForm_Load);
@@ -261,5 +274,6 @@ namespace PluginConfiguration
         private FolderBrowserDialog folderBrowserDialog2;
         private FolderBrowserDialog folderBrowserDialog1;
         private OpenFileDialog openFileDialog2;
+        private Label label1;
     }
 }

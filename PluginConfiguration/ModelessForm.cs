@@ -36,6 +36,12 @@ namespace PluginConfiguration
 
         #region Private data members
 
+        // Instanza della classe 
+        internal static ModelessForm thisModForm = null;
+
+        // Percorso del singolo file excel da importare di default
+        private string _pathFileTxt = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Bold Software\DataCell\ConfigPath.json";
+
         // Valore del Path del file Configuration
         private string _pathConfig = "";
 
@@ -72,6 +78,13 @@ namespace PluginConfiguration
 
 
         #region Class public property
+        /// <summary>
+        /// Proprietà pubblica per accedere al valore della richiesta corrente
+        /// </summary>
+        public string PathFileTxt
+        {
+            get { return _pathFileTxt; }
+        }
 
         /// <summary>
         /// Proprietà pubblica per accedere al valore della richiesta corrente
@@ -115,6 +128,9 @@ namespace PluginConfiguration
             InitializeComponent();
             m_Handler = handler;
             m_ExEvent = exEvent;
+
+            // Riempie l'istanza di questa classe con la Form
+            thisModForm = this;
 
             // Definisce il percorso di default del TextBox COMMESSE
             tabPage1commesseFileTextBox.Text = GetPathConfig();
@@ -210,7 +226,7 @@ namespace PluginConfiguration
         }
 
         /// <summary>
-        ///   Metodo che restituisce il path di CONFIGURAZIONE
+        ///   Metodo che restituisce il path del file Excel di CONFIGURAZIONE
         /// </summary>
         /// 
         private string GetPathConfig()
@@ -220,7 +236,7 @@ namespace PluginConfiguration
         }
 
         /// <summary>
-        ///   Metodo che restituisce il path di CONFIGURAZIONE
+        ///   Metodo che restituisce il path del file Excel delle DISTINTE
         /// </summary>
         /// 
         private string GetPathBOLD_Distinta()
@@ -230,7 +246,7 @@ namespace PluginConfiguration
         }
 
         /// <summary>
-        ///   Metodo che restituisce il path di CONFIGURAZIONE
+        ///   Metodo che restituisce il path della cartella delle IMMAGINI
         /// </summary>
         /// 
         private string GetPathImages()
@@ -255,7 +271,12 @@ namespace PluginConfiguration
                     // Modifica il path del file config di default
                     _pathConfig = _newPathConfig;
                     // Lo salva nel suo TextBox
-                    tabPage1commesseFileTextBox.Text = _newPathConfig;  
+                    tabPage1commesseFileTextBox.Text = _newPathConfig;
+
+                    // Modifica il file ConfigPath.json
+                    Json fileJson = new Json();
+                    fileJson.UpdateJson(1, 0, "ConfigPath", _pathConfig);
+
                 }
                 catch (SecurityException ex)
                 {
@@ -296,6 +317,12 @@ namespace PluginConfiguration
                 ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colAbacocells);
                 // Modifica il path Images presente nel file Excel di Configurazione
                 ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colImages);
+
+                // Modifica il file ConfigPath.json
+                Json fileJson = new Json();
+                fileJson.UpdateJson(2, 1, "DataCellPath", _pathDataCell);
+                fileJson.UpdateJson(3, 2, "AbacoCellPath", _pathBOLD_Distinta);
+                fileJson.UpdateJson(4, 3, "ImagesPath", _pathImages);
             }
         }
 
@@ -317,6 +344,10 @@ namespace PluginConfiguration
                 _rawCommessa = 2;
                 _colAbacocells = 4;
                 ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colAbacocells);
+
+                // Modifica il file ConfigPath.json
+                Json fileJson = new Json();
+                fileJson.UpdateJson(3, 2, "AbacoCellPath", _pathBOLD_Distinta);
             }
         }
 
@@ -338,10 +369,14 @@ namespace PluginConfiguration
                 _rawCommessa = 2;
                 _colImages = 5;
                 ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colImages);
+
+                // Modifica il file ConfigPath.json
+                Json fileJson = new Json();
+                fileJson.UpdateJson(4, 3, "ImagesPath", _pathImages);
             }
         }
-       
 
+        #region EXCEL
         /// <summary>
         ///   Metodo che Importa il foglio Excel per ottenere i dati contenuti in alcune sue celle
         /// </summary>
@@ -546,6 +581,7 @@ namespace PluginConfiguration
             }
             AllProcesses = null;
         }
+        #endregion
 
 
         /// <summary>
@@ -556,7 +592,6 @@ namespace PluginConfiguration
         {
             Close();
         }
-
 
     }  // class
 }

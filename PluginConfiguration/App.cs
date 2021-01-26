@@ -45,11 +45,11 @@ namespace PluginConfiguration
 
             // Creazione del Button da inserire nel Tab
             if (ribbonPanel.AddItem(
-                new PushButtonData("PluginConfiguration", "Configuration", thisAssemblyPath, "PluginConfiguration.Command"))
+                new PushButtonData("PluginConfiguration", "Config", thisAssemblyPath, "PluginConfiguration.Command"))
                 is PushButton button)
             {
                 // ToolTip mostrato
-                button.ToolTip = "Plug-in Configuration";
+                button.ToolTip = "Plug-in di configurazione di DataCell";
                 // Icona del Button
                 Uri uriImage = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Bold Software\Config\Icon\revit_small.png");
                 BitmapImage image = new BitmapImage(uriImage);

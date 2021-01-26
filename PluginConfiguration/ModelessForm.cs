@@ -271,11 +271,13 @@ namespace PluginConfiguration
                     // Modifica il path del file config di default
                     _pathConfig = _newPathConfig;
                     // Lo salva nel suo TextBox
-                    tabPage1commesseFileTextBox.Text = _newPathConfig;
+                    tabPage1commesseFileTextBox.Text = _pathConfig;
 
                     // Modifica il file ConfigPath.json
                     Json fileJson = new Json();
-                    fileJson.UpdateJson(1, 0, "ConfigPath", _pathConfig);
+                    string pathReplaced = _pathConfig.Replace(Environment.GetFolderPath(
+                        Environment.SpecialFolder.MyDocuments), "");
+                    fileJson.UpdateJson(1, 0, "ConfigPath", pathReplaced);
 
                 }
                 catch (SecurityException ex)
@@ -320,9 +322,15 @@ namespace PluginConfiguration
 
                 // Modifica il file ConfigPath.json
                 Json fileJson = new Json();
-                fileJson.UpdateJson(2, 1, "DataCellPath", _pathDataCell);
-                fileJson.UpdateJson(3, 2, "AbacoCellPath", _pathBOLD_Distinta);
-                fileJson.UpdateJson(4, 3, "ImagesPath", _pathImages);
+                string pathDataCellReplaced = _pathDataCell.Replace(Environment.GetFolderPath(
+                        Environment.SpecialFolder.UserProfile), "");
+                fileJson.UpdateJson(2, 1, "DataCellPath", pathDataCellReplaced);
+                string pathBOLD_DistintaReplaced = _pathBOLD_Distinta.Replace(Environment.GetFolderPath(
+                        Environment.SpecialFolder.UserProfile), "");
+                fileJson.UpdateJson(3, 2, "AbacoCellPath", pathBOLD_DistintaReplaced);
+                string pathImagesReplaced = _pathImages.Replace(Environment.GetFolderPath(
+                        Environment.SpecialFolder.UserProfile), "");
+                fileJson.UpdateJson(4, 3, "ImagesPath", pathImagesReplaced);
             }
         }
 
@@ -347,7 +355,9 @@ namespace PluginConfiguration
 
                 // Modifica il file ConfigPath.json
                 Json fileJson = new Json();
-                fileJson.UpdateJson(3, 2, "AbacoCellPath", _pathBOLD_Distinta);
+                string pathBOLD_DistintaReplaced = _pathBOLD_Distinta.Replace(Environment.GetFolderPath(
+                        Environment.SpecialFolder.UserProfile), "");
+                fileJson.UpdateJson(3, 2, "AbacoCellPath", pathBOLD_DistintaReplaced);
             }
         }
 
@@ -372,7 +382,9 @@ namespace PluginConfiguration
 
                 // Modifica il file ConfigPath.json
                 Json fileJson = new Json();
-                fileJson.UpdateJson(4, 3, "ImagesPath", _pathImages);
+                string pathImagesReplaced = _pathImages.Replace(Environment.GetFolderPath(
+                        Environment.SpecialFolder.UserProfile), "");
+                fileJson.UpdateJson(4, 3, "ImagesPath", pathImagesReplaced);
             }
         }
 

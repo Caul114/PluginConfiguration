@@ -216,24 +216,25 @@ namespace PluginConfiguration
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "Config.xlsx";
-            this.openFileDialog1.Filter = "File Excel (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-            this.openFileDialog1.InitialDirectory = "C:\\Users\\Bold\\Documents\\Bold Software\\Config";
+            this.openFileDialog1.Filter = "File Excel (*.xlsx)|*.xlsx";
+            this.openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\BOLD Software\\Config";
             // 
             // folderBrowserDialog2
             // 
             this.folderBrowserDialog2.Description = "Scegli la Directory da cui vuoi prendere le immagini.";
-            this.folderBrowserDialog2.SelectedPath = "C:\\";
+            this.folderBrowserDialog2.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             // 
             // folderBrowserDialog1
             // 
             this.folderBrowserDialog1.Description = "Scegli la Directory da cui vuoi prendere le immagini.";
-            this.folderBrowserDialog1.SelectedPath = "C:\\";
+            this.folderBrowserDialog1.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             // 
             // openFileDialog2
             // 
             this.openFileDialog2.DefaultExt = "xlsm";
             this.openFileDialog2.FileName = "AbacoCells.xlsm";
-            this.openFileDialog2.Filter = "File Excel (*.xlsm)|*.xlsm|All files (*.*)|*.*";
+            this.openFileDialog2.Filter = "File Excel (*.xlsm)|*.xlsm";
+            this.openFileDialog2.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             // 
             // ModelessForm
             // 

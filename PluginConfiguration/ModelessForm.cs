@@ -268,17 +268,25 @@ namespace PluginConfiguration
                 {
                     // Ottiene il nuovo Path del File di configurazione
                     _newPathConfig = openFileDialog1.FileName;
-                    // Modifica il path del file config di default
-                    _pathConfig = _newPathConfig;
-                    // Lo salva nel suo TextBox
-                    tabPage1commesseFileTextBox.Text = _pathConfig;
 
-                    // Modifica il file ConfigPath.json
-                    Json fileJson = new Json();
-                    string pathReplaced = _pathConfig.Replace(Environment.GetFolderPath(
-                        Environment.SpecialFolder.MyDocuments), "");
-                    fileJson.UpdateJson(1, 0, "ConfigPath", pathReplaced);
+                    if (!_newPathConfig.Contains("BOLD Software\\Config\\Config.xlsx"))
+                    {
+                        MessageBox.Show("Non hai scelto il file corretto.\n" +
+                            "Inserisci nuovamente il nome del file, ricordandoti che abbia questo percorso: \"...BOLD Software\\Config\\Config.xlsx\"");
+                    }
+                    else
+                    {
+                        // Modifica il path del file config di default
+                        _pathConfig = _newPathConfig;
+                        // Lo salva nel suo TextBox
+                        tabPage1commesseFileTextBox.Text = _pathConfig;
 
+                        // Modifica il file ConfigPath.json
+                        Json fileJson = new Json();
+                        string pathReplaced = _pathConfig.Replace(Environment.GetFolderPath(
+                            Environment.SpecialFolder.MyDocuments), "");
+                        fileJson.UpdateJson(1, 0, "ConfigPath", pathReplaced);
+                    }
                 }
                 catch (SecurityException ex)
                 {
@@ -300,37 +308,46 @@ namespace PluginConfiguration
             {
                 // Imposta il percorso della cartella DataCell
                 _newPathDataCell = folderBrowserDialog1.SelectedPath;
-                _pathDataCell = _newPathDataCell;
-                tabPage1fileDataCellTextBox.Text = _pathDataCell;
-                // Invoca i metodi per la modifica dei percorsi del BOLD_Distinta e delle Images
-                _newPathBOLD_Distinta = GetPathBOLD_Distinta();
-                _pathBOLD_Distinta = _newPathBOLD_Distinta;
-                tabPage1excelDistintaTextBox.Text = _pathBOLD_Distinta;
-                _newPathImages = GetPathImages();
-                _pathImages = _newPathImages;
-                tabPage1dirImagesTextBox.Text = _pathImages;
-                // Modifica il path DataCell presente nel file Excel di Configurazione
-                _rawCommessa = 2;
-                _colDataCell = 3;
-                _colAbacocells = 4;
-                _colImages = 5;
-                ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colDataCell);
-                // Modifica il path AbacoCells presente nel file Excel di Configurazione
-                ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colAbacocells);
-                // Modifica il path Images presente nel file Excel di Configurazione
-                ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colImages);
 
-                // Modifica il file ConfigPath.json
-                Json fileJson = new Json();
-                string pathDataCellReplaced = _pathDataCell.Replace(Environment.GetFolderPath(
-                        Environment.SpecialFolder.UserProfile), "");
-                fileJson.UpdateJson(2, 1, "DataCellPath", pathDataCellReplaced);
-                string pathBOLD_DistintaReplaced = _pathBOLD_Distinta.Replace(Environment.GetFolderPath(
-                        Environment.SpecialFolder.UserProfile), "");
-                fileJson.UpdateJson(3, 2, "AbacoCellPath", pathBOLD_DistintaReplaced);
-                string pathImagesReplaced = _pathImages.Replace(Environment.GetFolderPath(
-                        Environment.SpecialFolder.UserProfile), "");
-                fileJson.UpdateJson(4, 3, "ImagesPath", pathImagesReplaced);
+                if (!_newPathDataCell.Contains("\\DataCell") || _newPathDataCell.Contains("\\Images"))
+                {
+                    MessageBox.Show("Non hai scelto il file corretto.\n" +
+                        "Clicca nuovamente il pulsante di configurazione e cerca il percorso corretto della cartella DataCell.");
+                }
+                else
+                {
+                    _pathDataCell = _newPathDataCell;
+                    tabPage1fileDataCellTextBox.Text = _pathDataCell;
+                    // Invoca i metodi per la modifica dei percorsi del BOLD_Distinta e delle Images
+                    _newPathBOLD_Distinta = GetPathBOLD_Distinta();
+                    _pathBOLD_Distinta = _newPathBOLD_Distinta;
+                    tabPage1excelDistintaTextBox.Text = _pathBOLD_Distinta;
+                    _newPathImages = GetPathImages();
+                    _pathImages = _newPathImages;
+                    tabPage1dirImagesTextBox.Text = _pathImages;
+                    // Modifica il path DataCell presente nel file Excel di Configurazione
+                    _rawCommessa = 2;
+                    _colDataCell = 3;
+                    _colAbacocells = 4;
+                    _colImages = 5;
+                    ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colDataCell);
+                    // Modifica il path AbacoCells presente nel file Excel di Configurazione
+                    ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colAbacocells);
+                    // Modifica il path Images presente nel file Excel di Configurazione
+                    ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colImages);
+
+                    // Modifica il file ConfigPath.json
+                    Json fileJson = new Json();
+                    string pathDataCellReplaced = _pathDataCell.Replace(Environment.GetFolderPath(
+                            Environment.SpecialFolder.UserProfile), "");
+                    fileJson.UpdateJson(2, 1, "DataCellPath", pathDataCellReplaced);
+                    string pathBOLD_DistintaReplaced = _pathBOLD_Distinta.Replace(Environment.GetFolderPath(
+                            Environment.SpecialFolder.UserProfile), "");
+                    fileJson.UpdateJson(3, 2, "AbacoCellPath", pathBOLD_DistintaReplaced);
+                    string pathImagesReplaced = _pathImages.Replace(Environment.GetFolderPath(
+                            Environment.SpecialFolder.UserProfile), "");
+                    fileJson.UpdateJson(4, 3, "ImagesPath", pathImagesReplaced);
+                }
             }
         }
 
@@ -346,18 +363,26 @@ namespace PluginConfiguration
             {
                 // Invoca i metodi per la modifica dei percorsi del BOLD_Distinta e delle Images
                 _newPathBOLD_Distinta = openFileDialog2.FileName;
-                _pathBOLD_Distinta = _newPathBOLD_Distinta;
-                tabPage1excelDistintaTextBox.Text = _pathBOLD_Distinta;
-                // Modifica il path DataCell presente nel file Excel di Configurazione
-                _rawCommessa = 2;
-                _colAbacocells = 4;
-                ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colAbacocells);
+                if (!_newPathBOLD_Distinta.Contains("\\DataCell\\AbacoCells.xlsm"))
+                {
+                    MessageBox.Show("Non hai scelto il file corretto.\n" +
+                        "Clicca nuovamente il pulsante di configurazione, ricordandoti che il file abbia questo percorso: \"...DataCell\\AbacoCells.xlsm\"");
+                }
+                else
+                {
+                    _pathBOLD_Distinta = _newPathBOLD_Distinta;
+                    tabPage1excelDistintaTextBox.Text = _pathBOLD_Distinta;
+                    // Modifica il path DataCell presente nel file Excel di Configurazione
+                    _rawCommessa = 2;
+                    _colAbacocells = 4;
+                    ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colAbacocells);
 
-                // Modifica il file ConfigPath.json
-                Json fileJson = new Json();
-                string pathBOLD_DistintaReplaced = _pathBOLD_Distinta.Replace(Environment.GetFolderPath(
-                        Environment.SpecialFolder.UserProfile), "");
-                fileJson.UpdateJson(3, 2, "AbacoCellPath", pathBOLD_DistintaReplaced);
+                    // Modifica il file ConfigPath.json
+                    Json fileJson = new Json();
+                    string pathBOLD_DistintaReplaced = _pathBOLD_Distinta.Replace(Environment.GetFolderPath(
+                            Environment.SpecialFolder.UserProfile), "");
+                    fileJson.UpdateJson(3, 2, "AbacoCellPath", pathBOLD_DistintaReplaced);
+                }
             }
         }
 
@@ -373,18 +398,26 @@ namespace PluginConfiguration
             {
                 // Invoca il metodo per la modifica del percorso delle Images
                 _newPathImages = folderBrowserDialog2.SelectedPath;
-                _pathImages = _newPathImages;
-                tabPage1dirImagesTextBox.Text = _pathImages;
-                // Modifica il path Images presente nel file Excel di Configurazione
-                _rawCommessa = 2;
-                _colImages = 5;
-                ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colImages);
+                if (!_newPathImages.Contains("\\DataCell\\Images"))
+                {
+                    MessageBox.Show("Non hai scelto il file corretto.\n" +
+                        "Clicca nuovamente il pulsante di configurazione e cerca il percorso corretto della cartella \"...DataCell\\Images.");
+                }
+                else
+                {
+                    _pathImages = _newPathImages;
+                    tabPage1dirImagesTextBox.Text = _pathImages;
+                    // Modifica il path Images presente nel file Excel di Configurazione
+                    _rawCommessa = 2;
+                    _colImages = 5;
+                    ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colImages);
 
-                // Modifica il file ConfigPath.json
-                Json fileJson = new Json();
-                string pathImagesReplaced = _pathImages.Replace(Environment.GetFolderPath(
-                        Environment.SpecialFolder.UserProfile), "");
-                fileJson.UpdateJson(4, 3, "ImagesPath", pathImagesReplaced);
+                    // Modifica il file ConfigPath.json
+                    Json fileJson = new Json();
+                    string pathImagesReplaced = _pathImages.Replace(Environment.GetFolderPath(
+                            Environment.SpecialFolder.UserProfile), "");
+                    fileJson.UpdateJson(4, 3, "ImagesPath", pathImagesReplaced);
+                }
             }
         }
 

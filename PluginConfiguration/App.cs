@@ -6,6 +6,7 @@ using Autodesk.Revit.UI;
 using Microsoft.Office.Interop;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -51,11 +52,29 @@ namespace PluginConfiguration
                 // ToolTip mostrato
                 button.ToolTip = "Plug-in di configurazione di DataCell";
                 // Icona del Button
-                Uri uriImage = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Bold Software\Config\Icon\revit_small.png");
-                BitmapImage image = new BitmapImage(uriImage);
-                button.LargeImage = image;
+                button.Image = GetEmbeddedImage("PluginConfiguration.Resources.BOLDsft_16.png");
+                button.LargeImage = GetEmbeddedImage("PluginConfiguration.Resources.BOLDsft_32.png");
             };
             return Result.Succeeded;
+        }
+
+        /// <summary>
+        /// Implementa il caricamento dell'Immagine Embedded
+        /// </summary>
+        /// <param name="application">Percorso dell'immagine</param>
+        /// <returns></returns>
+        static BitmapSource GetEmbeddedImage(string name)
+        {
+            try
+            {
+                Assembly assemb = Assembly.GetExecutingAssembly();
+                Stream stre = assemb.GetManifestResourceStream(name);
+                return BitmapFrame.Create(stre);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -63,7 +82,6 @@ namespace PluginConfiguration
         /// </summary>
         /// <param name="application"></param>
         /// <returns></returns>
-
         public Result OnShutdown(UIControlledApplication application)
         {
             if (m_MyForm != null && m_MyForm.Visible)

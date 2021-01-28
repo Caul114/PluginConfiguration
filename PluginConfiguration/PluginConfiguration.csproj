@@ -110,9 +110,9 @@
     <Content Include="PluginConfiguration.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\BOLDsft_16.ico" />
-    <EmbeddedResource Include="Resources\BOLDsft_16.png" />
-    <EmbeddedResource Include="Resources\BOLDsft_32.png" />
+    <Content Include="Resources\code-small.png" />
+    <Content Include="Resources\revitIcon.ico" />
+    <Content Include="Resources\revit_small.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ModelessForm.resx">

@@ -34,9 +34,13 @@ namespace PluginConfiguration
         /// </summary>
         None = 0,
         /// <summary>
-        /// "Picker" request
+        /// "SetCode" request
         /// </summary>
-        Id = 1,
+        SetCode = 1,
+        /// <summary>
+        /// "ChangeCode" request
+        /// </summary>
+        ChangeCode = 2,
     }
 
     /// <summary>

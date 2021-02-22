@@ -43,7 +43,28 @@ namespace PluginConfiguration
         private Request m_request = new Request();
 
         // Un instanza della finestra di dialogo
-        private ModelessForm modelessForm;
+        private ModelessForm _modelessForm;
+
+        // Il nome del Codice Tipologia
+        private string _typologieCode = string.Empty;
+
+        //// Il valore del Codice Tipologia
+        //private string _valueTypologieCode = string.Empty;
+
+        // Il nome del Codice Cellula
+        private string _cellCode = string.Empty;
+
+        //// Il valore del Codice Cellula
+        //private string _valueCellCode = string.Empty;
+
+        // Il nome del Codice Posizionale
+        private string _positionalCode = string.Empty;
+
+        //// Il valore del Codice Posizionale
+        //private string _valuePositionalCode = string.Empty;
+
+        // Variabile che raccoglie tutti i parametri dell'elemento
+        private List<string> _allParameters;
         #endregion
 
         #region Class public property
@@ -54,6 +75,30 @@ namespace PluginConfiguration
         {
             get { return m_request; }
         }
+
+        /// <summary>
+        /// Proprietà pubblica per accedere al valore della richiesta corrente
+        /// </summary>
+        public string TypologieCode
+        {
+            get { return _typologieCode; }
+        }
+
+        /// <summary>
+        /// Proprietà pubblica per accedere al valore della richiesta corrente
+        /// </summary>
+        public string CellCode
+        {
+            get { return _cellCode; }
+        }
+
+        /// <summary>
+        /// Proprietà pubblica per accedere al valore della richiesta corrente
+        /// </summary>
+        public string PositionalCode
+        {
+            get { return _positionalCode; }
+        }
         #endregion
 
         #region Class public method
@@ -63,6 +108,7 @@ namespace PluginConfiguration
         public RequestHandler()
         {
             // Costruisce i membri dei dati per le proprietà
+            _allParameters = new List<string>();
         }
         #endregion
 
@@ -93,7 +139,16 @@ namespace PluginConfiguration
                         {
                             return;  // no request at this time -> we can leave immediately
                         }
-                    case RequestId.Id:
+                    case RequestId.SetCode:
+                        {
+                            // Cattura tutti i parametri di un Curtain Panel
+                            _allParameters = GetAllParameters(uiapp);
+                            // Riempie le ComboBoxes del CodexDefinition
+                            _modelessForm = App.thisApp.RetriveForm();
+                            _modelessForm.FillTheComboBoxes(_allParameters);
+                            break;
+                        }
+                    case RequestId.ChangeCode:
                         {
                             break;
                         }
@@ -114,13 +169,87 @@ namespace PluginConfiguration
         }
 
         /// <summary>
-        ///   Metodo richiamato nello switch
+        ///   La subroutine che cattura TUTTI I PARAMETRI di un elemento casuale
         /// </summary>
         /// <remarks>
         /// </remarks>
         /// <param name="uiapp">L'oggetto Applicazione di Revit</param>m>
         /// 
+        private List<string> GetAllParameters(UIApplication uiapp)
+        {
+            List<string> parameters = new List<string>();
+            // Chiamo la vista attiva e seleziono gli elementi che mi servono
+            UIDocument uidoc = uiapp.ActiveUIDocument;
+            Document doc = uidoc.Document;
 
+            // Metodo per catturare i Curtain Panels del Document
+            FilteredElementCollector collector = new FilteredElementCollector(doc);
+            ElementCategoryFilter categoryFilter = new ElementCategoryFilter(BuiltInCategory.OST_CurtainWallPanels);
+            collector.WherePasses(categoryFilter);
+
+            // Cattura il primo elemento della collezione
+            Element ele = collector.FirstOrDefault(p =>
+                p.get_Parameter(BuiltInParameter.HOST_VOLUME_COMPUTED) != null &&
+                p.get_Parameter(BuiltInParameter.HOST_VOLUME_COMPUTED).Definition.Name == "Volume");
+            parameters = GetAllParameterValues(doc, ele);
+            return parameters;
+        }
+
+        /// <summary>
+        /// Restituisce tutti i valori dei parametri
+        /// </summary>
+        private List<string> GetAllParameterValues(Document doc, Element e)
+        {
+            ArrayList allParams = new ArrayList();
+
+            // (1) Cattura tutti i parametri scelti tramite un METODO
+            IList<Parameter> psM = e.GetOrderedParameters();
+
+            foreach (Parameter p in psM)
+            {
+                // AsValueString visualizza il valore così come lo vede l'utente. 
+                // In alcuni casi, il valore del database sottostante 
+                // restituito da AsInteger, AsDouble, ecc., potrebbe essere più rilevante.
+                allParams.Add(string.Format("{0}", p.Definition.Name));
+            }
+
+            // (2) Ottiene il ParameterSet tramite la PROPRIETA' dell'elemento
+            ParameterSet psP = e.Parameters;
+
+            foreach (Parameter p in psP)
+            {
+                allParams.Add(string.Format("{0}", p.Definition.Name));
+            }
+
+            // (3) Ottiene il ParameterSet tramite la FAMIGLIA dell'elemento
+            ElementType eleType = doc.GetElement(e.GetTypeId()) as ElementType;
+            if (eleType != null)
+            {
+                ParameterSet psF = eleType.Parameters;
+
+                foreach (Parameter p in psF)
+                {
+                    allParams.Add(string.Format("{0}", p.Definition.Name));
+                }
+            }
+
+            // Dichiara una List<string> temporanea e la riempio 
+            List<string> temp = new List<string>();
+            foreach (var item in allParams)
+            {
+                temp.Add((string)item);
+            }
+            // Crea un IOrderedEnumerable per ordinare la List<string>
+            var ordered = temp.OrderBy(x => x).Distinct();
+            // Dichiara e riempie una nuova ArrayList per il risultato finale
+            List<string> stringsResult = new List<string>();
+            foreach (var item in ordered)
+            {
+                stringsResult.Add(item);
+            }
+
+            return stringsResult;
+        }
 
     }  // class
 

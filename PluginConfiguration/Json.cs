@@ -13,13 +13,13 @@ namespace PluginConfiguration
         private List<Data> _data = new List<Data>();
 
         // Metodo per CREARE il file Json
-        public List<Data> WriteJson(int id, string name, string path)
+        public List<Data> WriteJson(int id, string name, string value)
         {
             _data.Add(new Data()
             {
                 Id = id,
                 Name = name,
-                Path = path
+                Value = value
             });
             string jsonString = JsonConvert.SerializeObject(_data.ToArray());
             //write string to file
@@ -29,21 +29,40 @@ namespace PluginConfiguration
         }
 
         // Metodo per MODIFICARE o AGGIUNGERE un oggetto del file .json
-        public void UpdateJson(int id, int index, string name, string path)
+        public void UpdateJson(int id, int index, string name, string value)
         {
-            string jsonText = File.ReadAllText(ModelessForm.thisModForm.PathFileTxt);
+            string pathFileConfig = ModelessForm.thisModForm.PathFileTxt;
+            string jsonText = string.Empty;
+            if (!File.Exists(pathFileConfig))
+            {
+                _data.Add(new Data()
+                {
+                    Id = id,
+                    Name = name,
+                    Value = value
+                });
+                jsonText = JsonConvert.SerializeObject(_data.ToArray());
+            }
+            else
+            {
+                jsonText = File.ReadAllText(pathFileConfig);
+            }
             IList<Data> traduction = JsonConvert.DeserializeObject<IList<Data>>(jsonText);
             dynamic jsonObj = JsonConvert.DeserializeObject(jsonText);
             // Se l'oggetto .json esiste già...
-            if (traduction.Any(x => x.Id == id))
+            if (traduction != null && traduction.Any(x => x.Id == id))
             {
-                jsonObj[index]["Path"] = path;
+                jsonObj[index]["Value"] = value;
                 string output = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
                 File.WriteAllText(ModelessForm.thisModForm.PathFileTxt, output);
             }
             else // ... altrimenti lo crea
             {
-                traduction.Add(new Data { Id = id, Name = name, Path = path });
+                if (traduction == null)
+                {
+                    traduction = new List<Data>();
+                }
+                traduction.Add(new Data { Id = id, Name = name, Value = value });
                 jsonText = JsonConvert.SerializeObject(traduction);
                 File.WriteAllText(ModelessForm.thisModForm.PathFileTxt, jsonText);
             }

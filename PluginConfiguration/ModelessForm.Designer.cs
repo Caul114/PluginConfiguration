@@ -33,6 +33,7 @@ namespace PluginConfiguration
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelessForm));
             this.exitButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -53,19 +54,29 @@ namespace PluginConfiguration
             this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.typologieCodeComboBox = new System.Windows.Forms.ComboBox();
+            this.cellCodeComboBox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.positionalCodeComboBox = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.saveButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(683, 471);
+            this.exitButton.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.exitButton.Location = new System.Drawing.Point(683, 578);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(75, 37);
             this.exitButton.TabIndex = 0;
             this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click_1);
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // tabControl1
             // 
@@ -73,11 +84,12 @@ namespace PluginConfiguration
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(750, 445);
+            this.tabControl1.Size = new System.Drawing.Size(750, 560);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.tabPage1fileDataCellButton);
             this.tabPage1.Controls.Add(this.tabPage1fileDataCellTextBox);
@@ -94,7 +106,7 @@ namespace PluginConfiguration
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(742, 416);
+            this.tabPage1.Size = new System.Drawing.Size(742, 531);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "DataCell";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -217,32 +229,114 @@ namespace PluginConfiguration
             // 
             this.openFileDialog1.FileName = "Config.xlsx";
             this.openFileDialog1.Filter = "File Excel (*.xlsx)|*.xlsx";
-            this.openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\BOLD Software\\Config";
+            this.openFileDialog1.InitialDirectory = "C:\\Users\\Bold\\Documents\\BOLD Software\\Config";
             // 
             // folderBrowserDialog2
             // 
             this.folderBrowserDialog2.Description = "Scegli la Directory da cui vuoi prendere le immagini.";
-            this.folderBrowserDialog2.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            this.folderBrowserDialog2.SelectedPath = "C:\\Users\\Bold";
             // 
             // folderBrowserDialog1
             // 
             this.folderBrowserDialog1.Description = "Scegli la Directory da cui vuoi prendere le immagini.";
-            this.folderBrowserDialog1.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            this.folderBrowserDialog1.SelectedPath = "C:\\Users\\Bold";
             // 
             // openFileDialog2
             // 
             this.openFileDialog2.DefaultExt = "xlsm";
             this.openFileDialog2.FileName = "AbacoCells.xlsm";
             this.openFileDialog2.Filter = "File Excel (*.xlsm)|*.xlsm";
-            this.openFileDialog2.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            this.openFileDialog2.InitialDirectory = "C:\\Users\\Bold";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.saveButton);
+            this.groupBox1.Controls.Add(this.positionalCodeComboBox);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.cellCodeComboBox);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.typologieCodeComboBox);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(29, 335);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(682, 171);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Parametri da importare";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(53, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Codice Tipologia:";
+            // 
+            // typologieCodeComboBox
+            // 
+            this.typologieCodeComboBox.FormattingEnabled = true;
+            this.typologieCodeComboBox.Location = new System.Drawing.Point(217, 40);
+            this.typologieCodeComboBox.Name = "typologieCodeComboBox";
+            this.typologieCodeComboBox.Size = new System.Drawing.Size(333, 24);
+            this.typologieCodeComboBox.TabIndex = 1;
+            this.typologieCodeComboBox.Text = "<- Scegli il parametro ->";
+            // 
+            // cellCodeComboBox
+            // 
+            this.cellCodeComboBox.FormattingEnabled = true;
+            this.cellCodeComboBox.Location = new System.Drawing.Point(217, 84);
+            this.cellCodeComboBox.Name = "cellCodeComboBox";
+            this.cellCodeComboBox.Size = new System.Drawing.Size(333, 24);
+            this.cellCodeComboBox.TabIndex = 3;
+            this.cellCodeComboBox.Text = "<- Scegli il parametro ->";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(53, 87);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(101, 17);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Codice Cellula:";
+            // 
+            // positionalCodeComboBox
+            // 
+            this.positionalCodeComboBox.FormattingEnabled = true;
+            this.positionalCodeComboBox.Location = new System.Drawing.Point(217, 127);
+            this.positionalCodeComboBox.Name = "positionalCodeComboBox";
+            this.positionalCodeComboBox.Size = new System.Drawing.Size(333, 24);
+            this.positionalCodeComboBox.TabIndex = 5;
+            this.positionalCodeComboBox.Text = "<- Scegli il parametro ->";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(53, 130);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(131, 17);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Codice Posizionale:";
+            // 
+            // saveButton
+            // 
+            this.saveButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.saveButton.Location = new System.Drawing.Point(590, 114);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 37);
+            this.saveButton.TabIndex = 2;
+            this.saveButton.Text = "Salva";
+            this.saveButton.UseVisualStyleBackColor = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // ModelessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 522);
+            this.ClientSize = new System.Drawing.Size(776, 627);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.exitButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ModelessForm";
@@ -251,6 +345,8 @@ namespace PluginConfiguration
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -276,5 +372,13 @@ namespace PluginConfiguration
         private FolderBrowserDialog folderBrowserDialog1;
         private OpenFileDialog openFileDialog2;
         private Label label1;
+        private GroupBox groupBox1;
+        private Button saveButton;
+        private ComboBox positionalCodeComboBox;
+        private Label label4;
+        private ComboBox cellCodeComboBox;
+        private Label label3;
+        private ComboBox typologieCodeComboBox;
+        private Label label2;
     }
 }

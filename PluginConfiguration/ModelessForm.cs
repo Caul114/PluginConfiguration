@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.UI;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -69,11 +70,18 @@ namespace PluginConfiguration
         // Valore del nuovo path di Images
         private string _newPathImages = "";
 
+        // Variabile che indica il nome del Codice Tipologia
+        private string _typologieCode = string.Empty;
+
+        // Variabile che indica il nome del Codice Cellula
+        private string _cellCode = string.Empty;
+
+        // Variabile che indica il nome del Codice Posizionale
+        private string _positionalCode = string.Empty;
+
         // Imposta i valori delle raw e delle column dell'Excel Config 
         private int _rawCommessa = 2;
-        private int _colDataCell = 3;
-        private int _colAbacocells = 4;
-        private int _colImages = 5;
+        private int _colValue = 0;
         #endregion
 
 
@@ -117,6 +125,30 @@ namespace PluginConfiguration
         {
             get { return _pathImages; }
         }
+
+        /// <summary>
+        /// Proprietà pubblica per accedere al valore della richiesta corrente
+        /// </summary>
+        public string TypologieCode
+        {
+            get { return _typologieCode; }
+        }
+
+        /// <summary>
+        /// Proprietà pubblica per accedere al valore della richiesta corrente
+        /// </summary>
+        public string CellCode
+        {
+            get { return _cellCode; }
+        }
+
+        /// <summary>
+        /// Proprietà pubblica per accedere al valore della richiesta corrente
+        /// </summary>
+        public string PositionalCode
+        {
+            get { return _positionalCode; }
+        }
         #endregion
 
         /// <summary>
@@ -145,6 +177,13 @@ namespace PluginConfiguration
 
             // Definisce il percorso di default del TextBox IMAGES
             tabPage1dirImagesTextBox.Text = _pathImages;
+
+            // Inizializza i codici nel caso in cui siano già memorizzati
+            GetCodes();
+
+            // Imposta le ComboBoxes con tutti i parametri disponibili
+            ConfigureTheCodes();
+
         }
 
         /// <summary>
@@ -192,6 +231,7 @@ namespace PluginConfiguration
         ///
         private void MakeRequest(RequestId request)
         {
+
             App.thisApp.DontShowFormTop();
             m_Handler.Request.Make(request);
             m_ExEvent.Raise();
@@ -325,17 +365,10 @@ namespace PluginConfiguration
                     _newPathImages = GetPathImages();
                     _pathImages = _newPathImages;
                     tabPage1dirImagesTextBox.Text = _pathImages;
-                    // Modifica il path DataCell presente nel file Excel di Configurazione
+                    // Modifica il path DataCell (e quelli relativi) presente nel file Excel di Configurazione
                     _rawCommessa = 2;
-                    _colDataCell = 3;
-                    _colAbacocells = 4;
-                    _colImages = 5;
-                    ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colDataCell);
-                    // Modifica il path AbacoCells presente nel file Excel di Configurazione
-                    ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colAbacocells);
-                    // Modifica il path Images presente nel file Excel di Configurazione
-                    ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colImages);
-
+                    _colValue = 3;
+                    ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colValue);
                     // Modifica il file ConfigPath.json
                     Json fileJson = new Json();
                     string pathDataCellReplaced = _pathDataCell.Replace(Environment.GetFolderPath(
@@ -366,7 +399,8 @@ namespace PluginConfiguration
                 if (!_newPathBOLD_Distinta.Contains("\\DataCell\\AbacoCells.xlsm"))
                 {
                     MessageBox.Show("Non hai scelto il file corretto.\n" +
-                        "Clicca nuovamente il pulsante di configurazione, ricordandoti che il file abbia questo percorso: \"...DataCell\\AbacoCells.xlsm\"");
+                        "Clicca nuovamente il pulsante di configurazione, " +
+                        "ricordandoti che il file abbia questo percorso: \"...DataCell\\AbacoCells.xlsm\"");
                 }
                 else
                 {
@@ -374,8 +408,8 @@ namespace PluginConfiguration
                     tabPage1excelDistintaTextBox.Text = _pathBOLD_Distinta;
                     // Modifica il path DataCell presente nel file Excel di Configurazione
                     _rawCommessa = 2;
-                    _colAbacocells = 4;
-                    ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colAbacocells);
+                    _colValue = 3;
+                    ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colValue);
 
                     // Modifica il file ConfigPath.json
                     Json fileJson = new Json();
@@ -401,7 +435,8 @@ namespace PluginConfiguration
                 if (!_newPathImages.Contains("\\DataCell\\Images"))
                 {
                     MessageBox.Show("Non hai scelto il file corretto.\n" +
-                        "Clicca nuovamente il pulsante di configurazione e cerca il percorso corretto della cartella \"...DataCell\\Images.");
+                        "Clicca nuovamente il pulsante di configurazione " +
+                        "e cerca il percorso corretto della cartella \"...DataCell\\Images.");
                 }
                 else
                 {
@@ -409,8 +444,8 @@ namespace PluginConfiguration
                     tabPage1dirImagesTextBox.Text = _pathImages;
                     // Modifica il path Images presente nel file Excel di Configurazione
                     _rawCommessa = 2;
-                    _colImages = 5;
-                    ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colImages);
+                    _colValue = 3;
+                    ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colValue);
 
                     // Modifica il file ConfigPath.json
                     Json fileJson = new Json();
@@ -421,12 +456,130 @@ namespace PluginConfiguration
             }
         }
 
+        #region Parameters
+        /// <summary>
+        ///   Chiama il pannello che inizializza i Codici di Tipologia, Cellula e Posizionale, se presenti
+        /// </summary>
+        /// 
+        public void GetCodes()
+        {
+            if (File.Exists(_pathFileTxt))
+            {
+                // Legge il .json dal file
+                string jsonText = File.ReadAllText(_pathFileTxt);
+                if (jsonText != string.Empty)
+                {
+                    var traduction = JsonConvert.DeserializeObject<IList<Data>>(jsonText);
+                    Data singleItem1 = traduction.FirstOrDefault(x => x.Id == 5);
+                    if (singleItem1 != null && singleItem1.Value != string.Empty)
+                    {
+                        _typologieCode = singleItem1.Value;
+                    }
+                    Data singleItem2 = traduction.FirstOrDefault(x => x.Id == 6);
+                    if (singleItem2 != null && singleItem2.Value != string.Empty)
+                    {
+                        _cellCode = singleItem2.Value;
+                    }
+                    Data singleItem3 = traduction.FirstOrDefault(x => x.Id == 7);
+                    if (singleItem3 != null && singleItem3.Value != string.Empty)
+                    {
+                        _positionalCode = singleItem3.Value;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        ///   Riempie le comboBoxes dei Codici di Tipologia, Cellula e Posizionale
+        /// </summary>
+        /// 
+        public void ConfigureTheCodes()
+        {
+            MakeRequest(RequestId.SetCode);
+        }
+
+        /// <summary>
+        ///   Riempie le ComboBoxes
+        /// </summary>
+        /// 
+        public void FillTheComboBoxes(List<string> stringList)
+        {
+            foreach (string item in stringList)
+            {
+                typologieCodeComboBox.Items.Add(item);
+                cellCodeComboBox.Items.Add(item);
+                positionalCodeComboBox.Items.Add(item);
+            }
+
+            // Verifica che il valore contenuto nei codici sia uno dei parametri
+            foreach (string param in stringList)
+            {
+                if (_typologieCode == param)
+                {
+                    typologieCodeComboBox.Text = _typologieCode;
+                }
+                if (_cellCode == param)
+                {
+                    cellCodeComboBox.Text = _cellCode;
+                }
+                if (_positionalCode == param)
+                {
+                    positionalCodeComboBox.Text = _positionalCode;
+                }
+            }
+        }
+
+        /// <summary>
+        ///   Save - salva le modifiche fatte ai codici dei Parametri
+        /// </summary>
+        /// 
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            _typologieCode = typologieCodeComboBox.SelectedItem as string;
+            _cellCode = cellCodeComboBox.SelectedItem as string;
+            _positionalCode = positionalCodeComboBox.SelectedItem as string;
+
+            // Salva i cambiamenti nel File di configurazione
+            SavesCodesInJson();
+        }
+
+        /// <summary>
+        ///   Salva i nuovi codici nel file .json di Configurazione
+        /// </summary>
+        /// 
+        private void SavesCodesInJson()
+        {
+            if (File.Exists(_pathFileTxt))
+            {
+                // Scrive i codici in un file esterno Json di Configurazione
+                Json fileJson = new Json();
+                fileJson.UpdateJson(5, 4, "TypologieCode", _typologieCode);
+                fileJson.UpdateJson(6, 5, "CellCode", _cellCode);
+                fileJson.UpdateJson(7, 6, "PositionalCode", _positionalCode);
+
+                // Ottiene il _pathconfig del foglio Excel
+                string jsonText = File.ReadAllText(ModelessForm.thisModForm.PathFileTxt);
+                IList<Data> traduction = JsonConvert.DeserializeObject<IList<Data>>(jsonText);
+                Data singleItem = traduction.FirstOrDefault(x => x.Id == 1);
+                string pathExcelConfig = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + singleItem.Value;
+
+                // Esporta le modifiche su foglio Excel, del pathDataCell, di AbacoCells.xlsm e di Images
+                KillExcel();
+                _colValue = 6;
+                ExportExcelAndChangeValue(pathExcelConfig, _rawCommessa, _colValue);
+
+                // Avvisa che il salvataggio è andato a buon fine
+                MessageBox.Show("Hai salvato correttamente i nuovi codici.");
+            }
+        }
+        #endregion
+
         #region EXCEL
         /// <summary>
         ///   Metodo che Importa il foglio Excel per ottenere i dati contenuti in alcune sue celle
         /// </summary>
         ///         
-        public void GetDataFromExcel(string selectedItem, string path)
+         public void GetDataFromExcel(string selectedItem, string path)
         {
             // Ottiene l'oggetto dell'applicazione Excel.
             Excel.Application excel_app = new Excel.Application();
@@ -451,12 +604,13 @@ namespace PluginConfiguration
 
             // Imposta il numero della riga e della colonna che si vuole ottenere
             int rawCommessa = _rawCommessa;
-            int colDataCell = _colDataCell;
-            int colAbacoCells = _colAbacocells;
-            int colImages = _colImages;
+            _colValue = 3;
+            int colDataCell = _colValue;
+            int colAbacoCells = _colValue + 1;
+            int colImages = _colValue + 2;
 
-        // Imposta il path della Distinta
-        SetPathContent(values, max_row, max_col, rawCommessa, colDataCell, colAbacoCells, colImages);
+            // Imposta il path della Distinta
+            SetPathContent(values, max_row, max_col, rawCommessa, colDataCell, colAbacoCells, colImages);
 
             // Chiude la cartella di lavoro senza salvare le modifiche.
             workbook.Close(false, Type.Missing, Type.Missing);
@@ -573,8 +727,7 @@ namespace PluginConfiguration
             workbook.Close(false, Type.Missing, Type.Missing);
             excelApp.Quit();
             File.Delete(pathExcel);
-            File.Move(tmpName, pathExcel);
-           
+            File.Move(tmpName, pathExcel);           
 
             // Chiude tutti i processi Excel ancora attivi
             KillExcel();
@@ -599,13 +752,25 @@ namespace PluginConfiguration
                     {
                         worksheet.Cells[row, col] = _pathDataCell;
                     }
-                    else if (row == recordRaw && col == recordCol && recordCol == 4)
+                    else if (row == recordRaw && col == (recordCol + 1) && (recordCol + 1) == 4)
                     {
                         worksheet.Cells[row, col] = _pathBOLD_Distinta;
                     }
-                    else if (row == recordRaw && col == recordCol && recordCol == 5)
+                    else if (row == recordRaw && col == (recordCol + 2) && (recordCol + 2) == 5)
                     {
                         worksheet.Cells[row, col] = _pathImages;
+                    }
+                    else if (row == recordRaw && col == recordCol  && recordCol == 6)
+                    {
+                        worksheet.Cells[row, col] = _typologieCode;
+                    }
+                    else if (row == recordRaw && col == (recordCol + 1) && (recordCol + 1) == 7)
+                    {
+                        worksheet.Cells[row, col] = _cellCode;
+                    }
+                    else if (row == recordRaw && col == (recordCol + 2) && (recordCol + 2) == 8)
+                    {
+                        worksheet.Cells[row, col] = _positionalCode;
                     }
                 }
             }
@@ -633,10 +798,9 @@ namespace PluginConfiguration
         ///   Exit - chiude la finestra di dialogo
         /// </summary>
         /// 
-        private void exitButton_Click_1(object sender, EventArgs e)
+        private void exitButton_Click(object sender, EventArgs e)
         {
             Close();
         }
-
     }  // class
 }

@@ -817,13 +817,16 @@ namespace PluginConfiguration
         /// 
         public void CustomizationOn()
         {
+            tabPage1commesseFileTextBox.BackColor = SystemColors.ButtonFace;
+            tabPage1commesseFileButton.BackColor = Color.Transparent;
             tabPage1commesseFileButton.Enabled = true;
-            //typologieCodeComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+            typologieCodeComboBox.BackColor = SystemColors.Window;
             typologieCodeComboBox.Enabled = true;
-            //cellCodeComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+            cellCodeComboBox.BackColor = SystemColors.Window;
             cellCodeComboBox.Enabled = true;
-            //positionalCodeComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+            positionalCodeComboBox.BackColor = SystemColors.Window;
             positionalCodeComboBox.Enabled = true;
+            saveButton.BackColor = SystemColors.GradientInactiveCaption;
             saveButton.Enabled = true;
         }
 

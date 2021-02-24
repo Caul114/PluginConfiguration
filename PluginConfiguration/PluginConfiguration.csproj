@@ -108,6 +108,11 @@
       <DependentUpon>ModelessForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Request.cs" />
     <Compile Include="RequestHandler.cs" />
     <Compile Include="Utils.cs" />
@@ -119,6 +124,10 @@
     <Content Include="Resources\BOLDsft_16.ico" />
     <EmbeddedResource Include="ControlForms\EditControl.resx">
       <DependentUpon>EditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\BOLDsft_16.png" />
     <EmbeddedResource Include="Resources\BOLDsft_32.png" />

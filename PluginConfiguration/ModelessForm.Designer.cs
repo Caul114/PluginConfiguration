@@ -153,7 +153,7 @@ namespace PluginConfiguration
             // 
             // saveButton
             // 
-            this.saveButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.saveButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.saveButton.Enabled = false;
             this.saveButton.Location = new System.Drawing.Point(590, 114);
             this.saveButton.Name = "saveButton";
@@ -165,6 +165,7 @@ namespace PluginConfiguration
             // 
             // positionalCodeComboBox
             // 
+            this.positionalCodeComboBox.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.positionalCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.positionalCodeComboBox.Enabled = false;
             this.positionalCodeComboBox.FormattingEnabled = true;
@@ -184,6 +185,7 @@ namespace PluginConfiguration
             // 
             // cellCodeComboBox
             // 
+            this.cellCodeComboBox.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.cellCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cellCodeComboBox.Enabled = false;
             this.cellCodeComboBox.FormattingEnabled = true;
@@ -203,6 +205,7 @@ namespace PluginConfiguration
             // 
             // typologieCodeComboBox
             // 
+            this.typologieCodeComboBox.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.typologieCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typologieCodeComboBox.Enabled = false;
             this.typologieCodeComboBox.FormattingEnabled = true;
@@ -259,17 +262,19 @@ namespace PluginConfiguration
             // 
             // tabPage1commesseFileButton
             // 
+            this.tabPage1commesseFileButton.BackColor = System.Drawing.Color.DarkGray;
             this.tabPage1commesseFileButton.Enabled = false;
             this.tabPage1commesseFileButton.Location = new System.Drawing.Point(681, 85);
             this.tabPage1commesseFileButton.Name = "tabPage1commesseFileButton";
             this.tabPage1commesseFileButton.Size = new System.Drawing.Size(30, 23);
             this.tabPage1commesseFileButton.TabIndex = 8;
             this.tabPage1commesseFileButton.Text = "...";
-            this.tabPage1commesseFileButton.UseVisualStyleBackColor = true;
+            this.tabPage1commesseFileButton.UseVisualStyleBackColor = false;
             this.tabPage1commesseFileButton.Click += new System.EventHandler(this.tabPage1commesseFileButton_Click);
             // 
             // tabPage1commesseFileTextBox
             // 
+            this.tabPage1commesseFileTextBox.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.tabPage1commesseFileTextBox.Location = new System.Drawing.Point(28, 85);
             this.tabPage1commesseFileTextBox.Name = "tabPage1commesseFileTextBox";
             this.tabPage1commesseFileTextBox.ReadOnly = true;

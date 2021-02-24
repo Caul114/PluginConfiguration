@@ -37,6 +37,16 @@ namespace PluginConfiguration
             this.exitButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.customizationButton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.positionalCodeComboBox = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cellCodeComboBox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.typologieCodeComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage1fileDataCellButton = new System.Windows.Forms.Button();
             this.tabPage1fileDataCellTextBox = new System.Windows.Forms.TextBox();
@@ -54,16 +64,9 @@ namespace PluginConfiguration
             this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.typologieCodeComboBox = new System.Windows.Forms.ComboBox();
-            this.cellCodeComboBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.positionalCodeComboBox = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.saveButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +92,7 @@ namespace PluginConfiguration
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.tabPage1fileDataCellButton);
@@ -110,6 +114,111 @@ namespace PluginConfiguration
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "DataCell";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.customizationButton);
+            this.groupBox2.Location = new System.Drawing.Point(543, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(168, 60);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            // 
+            // customizationButton
+            // 
+            this.customizationButton.BackColor = System.Drawing.Color.Bisque;
+            this.customizationButton.Location = new System.Drawing.Point(27, 15);
+            this.customizationButton.Name = "customizationButton";
+            this.customizationButton.Size = new System.Drawing.Size(115, 37);
+            this.customizationButton.TabIndex = 6;
+            this.customizationButton.Text = "Personalizza";
+            this.customizationButton.UseVisualStyleBackColor = false;
+            this.customizationButton.Click += new System.EventHandler(this.customizationButton_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.saveButton);
+            this.groupBox1.Controls.Add(this.positionalCodeComboBox);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.cellCodeComboBox);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.typologieCodeComboBox);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(29, 335);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(682, 171);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Parametri da importare";
+            // 
+            // saveButton
+            // 
+            this.saveButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.saveButton.Enabled = false;
+            this.saveButton.Location = new System.Drawing.Point(590, 114);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 37);
+            this.saveButton.TabIndex = 2;
+            this.saveButton.Text = "Salva";
+            this.saveButton.UseVisualStyleBackColor = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // positionalCodeComboBox
+            // 
+            this.positionalCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.positionalCodeComboBox.Enabled = false;
+            this.positionalCodeComboBox.FormattingEnabled = true;
+            this.positionalCodeComboBox.Location = new System.Drawing.Point(217, 127);
+            this.positionalCodeComboBox.Name = "positionalCodeComboBox";
+            this.positionalCodeComboBox.Size = new System.Drawing.Size(333, 24);
+            this.positionalCodeComboBox.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(53, 130);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(131, 17);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Codice Posizionale:";
+            // 
+            // cellCodeComboBox
+            // 
+            this.cellCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cellCodeComboBox.Enabled = false;
+            this.cellCodeComboBox.FormattingEnabled = true;
+            this.cellCodeComboBox.Location = new System.Drawing.Point(217, 84);
+            this.cellCodeComboBox.Name = "cellCodeComboBox";
+            this.cellCodeComboBox.Size = new System.Drawing.Size(333, 24);
+            this.cellCodeComboBox.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(53, 87);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(101, 17);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Codice Cellula:";
+            // 
+            // typologieCodeComboBox
+            // 
+            this.typologieCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.typologieCodeComboBox.Enabled = false;
+            this.typologieCodeComboBox.FormattingEnabled = true;
+            this.typologieCodeComboBox.Location = new System.Drawing.Point(217, 40);
+            this.typologieCodeComboBox.Name = "typologieCodeComboBox";
+            this.typologieCodeComboBox.Size = new System.Drawing.Size(333, 24);
+            this.typologieCodeComboBox.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(53, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Codice Tipologia:";
             // 
             // label1
             // 
@@ -135,6 +244,7 @@ namespace PluginConfiguration
             // 
             this.tabPage1fileDataCellTextBox.Location = new System.Drawing.Point(28, 152);
             this.tabPage1fileDataCellTextBox.Name = "tabPage1fileDataCellTextBox";
+            this.tabPage1fileDataCellTextBox.ReadOnly = true;
             this.tabPage1fileDataCellTextBox.Size = new System.Drawing.Size(647, 22);
             this.tabPage1fileDataCellTextBox.TabIndex = 10;
             // 
@@ -149,6 +259,7 @@ namespace PluginConfiguration
             // 
             // tabPage1commesseFileButton
             // 
+            this.tabPage1commesseFileButton.Enabled = false;
             this.tabPage1commesseFileButton.Location = new System.Drawing.Point(681, 85);
             this.tabPage1commesseFileButton.Name = "tabPage1commesseFileButton";
             this.tabPage1commesseFileButton.Size = new System.Drawing.Size(30, 23);
@@ -161,6 +272,7 @@ namespace PluginConfiguration
             // 
             this.tabPage1commesseFileTextBox.Location = new System.Drawing.Point(28, 85);
             this.tabPage1commesseFileTextBox.Name = "tabPage1commesseFileTextBox";
+            this.tabPage1commesseFileTextBox.ReadOnly = true;
             this.tabPage1commesseFileTextBox.Size = new System.Drawing.Size(647, 22);
             this.tabPage1commesseFileTextBox.TabIndex = 7;
             // 
@@ -187,6 +299,7 @@ namespace PluginConfiguration
             // 
             this.tabPage1dirImagesTextBox.Location = new System.Drawing.Point(29, 287);
             this.tabPage1dirImagesTextBox.Name = "tabPage1dirImagesTextBox";
+            this.tabPage1dirImagesTextBox.ReadOnly = true;
             this.tabPage1dirImagesTextBox.Size = new System.Drawing.Size(647, 22);
             this.tabPage1dirImagesTextBox.TabIndex = 4;
             // 
@@ -213,6 +326,7 @@ namespace PluginConfiguration
             // 
             this.tabPage1excelDistintaTextBox.Location = new System.Drawing.Point(29, 220);
             this.tabPage1excelDistintaTextBox.Name = "tabPage1excelDistintaTextBox";
+            this.tabPage1excelDistintaTextBox.ReadOnly = true;
             this.tabPage1excelDistintaTextBox.Size = new System.Drawing.Size(647, 22);
             this.tabPage1excelDistintaTextBox.TabIndex = 1;
             // 
@@ -248,87 +362,6 @@ namespace PluginConfiguration
             this.openFileDialog2.Filter = "File Excel (*.xlsm)|*.xlsm";
             this.openFileDialog2.InitialDirectory = "C:\\Users\\Bold";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.saveButton);
-            this.groupBox1.Controls.Add(this.positionalCodeComboBox);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.cellCodeComboBox);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.typologieCodeComboBox);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(29, 335);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(682, 171);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Parametri da importare";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(53, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Codice Tipologia:";
-            // 
-            // typologieCodeComboBox
-            // 
-            this.typologieCodeComboBox.FormattingEnabled = true;
-            this.typologieCodeComboBox.Location = new System.Drawing.Point(217, 40);
-            this.typologieCodeComboBox.Name = "typologieCodeComboBox";
-            this.typologieCodeComboBox.Size = new System.Drawing.Size(333, 24);
-            this.typologieCodeComboBox.TabIndex = 1;
-            this.typologieCodeComboBox.Text = "<- Scegli il parametro ->";
-            // 
-            // cellCodeComboBox
-            // 
-            this.cellCodeComboBox.FormattingEnabled = true;
-            this.cellCodeComboBox.Location = new System.Drawing.Point(217, 84);
-            this.cellCodeComboBox.Name = "cellCodeComboBox";
-            this.cellCodeComboBox.Size = new System.Drawing.Size(333, 24);
-            this.cellCodeComboBox.TabIndex = 3;
-            this.cellCodeComboBox.Text = "<- Scegli il parametro ->";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(53, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Codice Cellula:";
-            // 
-            // positionalCodeComboBox
-            // 
-            this.positionalCodeComboBox.FormattingEnabled = true;
-            this.positionalCodeComboBox.Location = new System.Drawing.Point(217, 127);
-            this.positionalCodeComboBox.Name = "positionalCodeComboBox";
-            this.positionalCodeComboBox.Size = new System.Drawing.Size(333, 24);
-            this.positionalCodeComboBox.TabIndex = 5;
-            this.positionalCodeComboBox.Text = "<- Scegli il parametro ->";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(53, 130);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(131, 17);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Codice Posizionale:";
-            // 
-            // saveButton
-            // 
-            this.saveButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.saveButton.Location = new System.Drawing.Point(590, 114);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 37);
-            this.saveButton.TabIndex = 2;
-            this.saveButton.Text = "Salva";
-            this.saveButton.UseVisualStyleBackColor = false;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
-            // 
             // ModelessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -345,6 +378,7 @@ namespace PluginConfiguration
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -380,5 +414,7 @@ namespace PluginConfiguration
         private Label label3;
         private ComboBox typologieCodeComboBox;
         private Label label2;
+        private GroupBox groupBox2;
+        private Button customizationButton;
     }
 }

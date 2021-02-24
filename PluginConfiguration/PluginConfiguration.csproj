@@ -93,6 +93,12 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="ControlForms\EditControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlForms\EditControl.Designer.cs">
+      <DependentUpon>EditControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data.cs" />
     <Compile Include="Json.cs" />
     <Compile Include="ModelessForm.cs">
@@ -111,6 +117,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\BOLDsft_16.ico" />
+    <EmbeddedResource Include="ControlForms\EditControl.resx">
+      <DependentUpon>EditControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\BOLDsft_16.png" />
     <EmbeddedResource Include="Resources\BOLDsft_32.png" />
   </ItemGroup>

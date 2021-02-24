@@ -1,5 +1,6 @@
 ﻿using Autodesk.Revit.UI;
 using Newtonsoft.Json;
+using PluginConfiguration.ControlForms;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -39,6 +40,9 @@ namespace PluginConfiguration
 
         // Instanza della classe 
         internal static ModelessForm thisModForm = null;
+
+        // Instanzia la classe della Personalizzazione
+        private EditControl editControl;
 
         // Percorso del singolo file excel da importare di default
         private string _pathFileTxt = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Bold Software\DataCell\ConfigPath.json";
@@ -793,6 +797,48 @@ namespace PluginConfiguration
         }
         #endregion
 
+        #region Customization
+        /// <summary>
+        ///   Personalizza - Pulsante che consente la modifica dei campi ReadOnly
+        /// </summary>
+        /// 
+        private void customizationButton_Click(object sender, EventArgs e)
+        {
+            editControl = new EditControl();
+            editControl.Show();
+            this.DozeOff();
+            this.SendToBack();
+            editControl.TopMost = true;
+        }
+
+        /// <summary>
+        ///  Metodo che rende modificabili i campi ReadOnly
+        /// </summary>
+        /// 
+        public void CustomizationOn()
+        {
+            tabPage1commesseFileButton.Enabled = true;
+            //typologieCodeComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+            typologieCodeComboBox.Enabled = true;
+            //cellCodeComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+            cellCodeComboBox.Enabled = true;
+            //positionalCodeComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+            positionalCodeComboBox.Enabled = true;
+            saveButton.Enabled = true;
+        }
+
+        /// <summary>
+        ///  Metodo di Chiusura della finestra di dialogo
+        /// </summary>
+        /// 
+        public void CloseEditControl()
+        {
+            this.WakeUp();
+            this.BringToFront();
+            editControl.Close();
+        }
+
+        #endregion
 
         /// <summary>
         ///   Exit - chiude la finestra di dialogo
@@ -802,5 +848,7 @@ namespace PluginConfiguration
         {
             Close();
         }
+
+
     }  // class
 }

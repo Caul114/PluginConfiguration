@@ -262,7 +262,7 @@ namespace PluginConfiguration
             // 
             // tabPage1commesseFileButton
             // 
-            this.tabPage1commesseFileButton.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage1commesseFileButton.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.tabPage1commesseFileButton.Enabled = false;
             this.tabPage1commesseFileButton.Location = new System.Drawing.Point(681, 85);
             this.tabPage1commesseFileButton.Name = "tabPage1commesseFileButton";
@@ -274,7 +274,7 @@ namespace PluginConfiguration
             // 
             // tabPage1commesseFileTextBox
             // 
-            this.tabPage1commesseFileTextBox.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.tabPage1commesseFileTextBox.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.tabPage1commesseFileTextBox.Location = new System.Drawing.Point(28, 85);
             this.tabPage1commesseFileTextBox.Name = "tabPage1commesseFileTextBox";
             this.tabPage1commesseFileTextBox.ReadOnly = true;

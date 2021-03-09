@@ -46,11 +46,11 @@ namespace PluginConfiguration
 
             // Creazione del Button da inserire nel Tab
             if (ribbonPanel.AddItem(
-                new PushButtonData("PluginConfiguration", "Config", thisAssemblyPath, "PluginConfiguration.Command"))
+                new PushButtonData("Config", "Config", thisAssemblyPath, "PluginConfiguration.Command"))
                 is PushButton button)
             {
                 // ToolTip mostrato
-                button.ToolTip = "Plug-in di configurazione di DataCell";
+                button.ToolTip = "Plug-in di configurazione di DataQuery";
                 // Icona del Button
                 button.Image = GetEmbeddedImage("PluginConfiguration.Resources.BOLDsft_16.png");
                 button.LargeImage = GetEmbeddedImage("PluginConfiguration.Resources.BOLDsft_32.png");
@@ -189,7 +189,7 @@ namespace PluginConfiguration
             // Prova a creare un RibbonPanel
             try
             {
-                RibbonPanel panel = uiapp.CreateRibbonPanel(tab, "Base");
+                RibbonPanel panel = uiapp.CreateRibbonPanel(tab, "Object Tools");
             }
             catch (Exception ex)
             {
@@ -198,7 +198,7 @@ namespace PluginConfiguration
 
             // Verifica se il tab del Panel esiste gia'
             List<RibbonPanel> panels = uiapp.GetRibbonPanels(tab);
-            foreach (RibbonPanel p in panels.Where(x => x.Name == "Base"))
+            foreach (RibbonPanel p in panels.Where(x => x.Name == "Object Tools"))
             {
                 ribbonPanel = p;
             }

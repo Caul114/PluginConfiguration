@@ -112,7 +112,7 @@ namespace PluginConfiguration
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(742, 531);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "DataCell";
+            this.tabPage1.Text = "DataQuery";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox2
@@ -179,9 +179,9 @@ namespace PluginConfiguration
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(53, 130);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(131, 17);
+            this.label4.Size = new System.Drawing.Size(148, 21);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Codice Posizionale:";
+            this.label4.Text = "Codice Elemento:";
             // 
             // cellCodeComboBox
             // 
@@ -199,9 +199,9 @@ namespace PluginConfiguration
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(53, 87);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 17);
+            this.label3.Size = new System.Drawing.Size(138, 21);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Codice Cellula:";
+            this.label3.Text = "Codice Oggetto:";
             // 
             // typologieCodeComboBox
             // 
@@ -219,9 +219,9 @@ namespace PluginConfiguration
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(53, 43);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 17);
+            this.label2.Size = new System.Drawing.Size(134, 21);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Codice Tipologia:";
+            this.label2.Text = "Codice Gruppo:";
             // 
             // label1
             // 
@@ -256,9 +256,9 @@ namespace PluginConfiguration
             this.tabPage1fileDataCellLabel.AutoSize = true;
             this.tabPage1fileDataCellLabel.Location = new System.Drawing.Point(25, 128);
             this.tabPage1fileDataCellLabel.Name = "tabPage1fileDataCellLabel";
-            this.tabPage1fileDataCellLabel.Size = new System.Drawing.Size(270, 17);
+            this.tabPage1fileDataCellLabel.Size = new System.Drawing.Size(358, 21);
             this.tabPage1fileDataCellLabel.TabIndex = 9;
-            this.tabPage1fileDataCellLabel.Text = "Percorso di default della Cartella DataCell";
+            this.tabPage1fileDataCellLabel.Text = "Percorso di default della Cartella DataQuery";
             // 
             // tabPage1commesseFileButton
             // 
@@ -340,9 +340,9 @@ namespace PluginConfiguration
             this.tabPage1excelDistintaLabel.AutoSize = true;
             this.tabPage1excelDistintaLabel.Location = new System.Drawing.Point(26, 196);
             this.tabPage1excelDistintaLabel.Name = "tabPage1excelDistintaLabel";
-            this.tabPage1excelDistintaLabel.Size = new System.Drawing.Size(287, 17);
+            this.tabPage1excelDistintaLabel.Size = new System.Drawing.Size(364, 21);
             this.tabPage1excelDistintaLabel.TabIndex = 0;
-            this.tabPage1excelDistintaLabel.Text = "Percorso di default del File AbacoCells Excel";
+            this.tabPage1excelDistintaLabel.Text = "Percorso di default del File DataSheets Excel";
             // 
             // openFileDialog1
             // 
@@ -363,7 +363,7 @@ namespace PluginConfiguration
             // openFileDialog2
             // 
             this.openFileDialog2.DefaultExt = "xlsm";
-            this.openFileDialog2.FileName = "AbacoCells.xlsm";
+            this.openFileDialog2.FileName = "DataSheets.xlsm";
             this.openFileDialog2.Filter = "File Excel (*.xlsm)|*.xlsm";
             this.openFileDialog2.InitialDirectory = "C:\\Users\\Bold";
             // 
@@ -378,7 +378,7 @@ namespace PluginConfiguration
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ModelessForm";
-            this.Text = "BOLD Configuration";
+            this.Text = "BOLD - Configuration";
             this.Load += new System.EventHandler(this.ModelessForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

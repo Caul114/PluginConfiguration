@@ -45,7 +45,7 @@ namespace PluginConfiguration
         private EditControl editControl;
 
         // Percorso del singolo file excel da importare di default
-        private string _pathFileTxt = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Bold Software\DataCell\ConfigPath.json";
+        private string _pathFileTxt = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\BOLD Software\DataQuery\ConfigPath.json";
 
         // Valore del Path del file Configuration
         private string _pathConfig = "";
@@ -275,7 +275,7 @@ namespace PluginConfiguration
         /// 
         private string GetPathConfig()
         {
-            _pathConfig = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Bold Software\Config\Config.xlsx";
+            _pathConfig = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\BOLD Software\Config\Config.xlsx";
             return _pathConfig;
         }
 
@@ -285,7 +285,7 @@ namespace PluginConfiguration
         /// 
         private string GetPathBOLD_Distinta()
         {
-            _pathBOLD_Distinta = _pathDataCell + @"\AbacoCells.xlsm";
+            _pathBOLD_Distinta = _pathDataCell + @"\DataSheets.xlsm";
             return _pathBOLD_Distinta;
         }
 
@@ -353,10 +353,10 @@ namespace PluginConfiguration
                 // Imposta il percorso della cartella DataCell
                 _newPathDataCell = folderBrowserDialog1.SelectedPath;
 
-                if (!_newPathDataCell.Contains("\\DataCell") || _newPathDataCell.Contains("\\Images"))
+                if (!_newPathDataCell.Contains("\\DataQuery") || _newPathDataCell.Contains("\\Images"))
                 {
                     MessageBox.Show("Non hai scelto il file corretto.\n" +
-                        "Clicca nuovamente il pulsante di configurazione e cerca il percorso corretto della cartella DataCell.");
+                        "Clicca nuovamente il pulsante di configurazione e cerca il percorso corretto della cartella DataQuery.");
                 }
                 else
                 {
@@ -389,7 +389,7 @@ namespace PluginConfiguration
         }
 
         /// <summary>
-        ///   Pulsante per la modifica del Path relativo ABACOCELL DATACELL
+        ///   Pulsante per la modifica del Path relativo DATASHEETS DATAQUERY
         /// </summary>
         /// 
         private void tabPage1excelDistintaButton_Click(object sender, EventArgs e)
@@ -400,11 +400,11 @@ namespace PluginConfiguration
             {
                 // Invoca i metodi per la modifica dei percorsi del BOLD_Distinta e delle Images
                 _newPathBOLD_Distinta = openFileDialog2.FileName;
-                if (!_newPathBOLD_Distinta.Contains("\\DataCell\\AbacoCells.xlsm"))
+                if (!_newPathBOLD_Distinta.Contains("\\DataQuery\\DataSheets.xlsm"))
                 {
                     MessageBox.Show("Non hai scelto il file corretto.\n" +
                         "Clicca nuovamente il pulsante di configurazione, " +
-                        "ricordandoti che il file abbia questo percorso: \"...DataCell\\AbacoCells.xlsm\"");
+                        "ricordandoti che il file abbia questo percorso: \"...DataQuery\\DataSheets.xlsm\"");
                 }
                 else
                 {
@@ -436,11 +436,11 @@ namespace PluginConfiguration
             {
                 // Invoca il metodo per la modifica del percorso delle Images
                 _newPathImages = folderBrowserDialog2.SelectedPath;
-                if (!_newPathImages.Contains("\\DataCell\\Images"))
+                if (!_newPathImages.Contains("\\DataQuery\\Images"))
                 {
                     MessageBox.Show("Non hai scelto il file corretto.\n" +
                         "Clicca nuovamente il pulsante di configurazione " +
-                        "e cerca il percorso corretto della cartella \"...DataCell\\Images.");
+                        "e cerca il percorso corretto della cartella \"...DataQuery\\Images.");
                 }
                 else
                 {

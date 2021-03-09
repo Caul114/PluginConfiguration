@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RevitAddIns>  
 	<AddIn Type="Application">
-		<Name>PluginConfiguration</Name>
+		<Name>Config</Name>
 		<Assembly>PluginConfiguration.dll</Assembly>
 		<FullClassName>PluginConfiguration.App</FullClassName>
 		<ClientId>BA2E663D-EFAF-4E11-B304-923314D8817D</ClientId>

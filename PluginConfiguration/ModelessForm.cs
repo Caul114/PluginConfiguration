@@ -168,7 +168,7 @@ namespace PluginConfiguration
             // Riempie l'istanza di questa classe con la Form
             thisModForm = this;
 
-            // Definisce il percorso di default del TextBox COMMESSE
+            // Definisce il percorso di default del TextBox commesse CONFIG.xlsx
             tabPage1commesseFileTextBox.Text = GetPathConfig();
 
             // Definisce il percorso di default della cartella DATACELL sul CLOUD     
@@ -327,9 +327,9 @@ namespace PluginConfiguration
 
                         // Modifica il file ConfigPath.json
                         Json fileJson = new Json();
-                        string pathReplaced = _pathConfig.Replace(Environment.GetFolderPath(
-                            Environment.SpecialFolder.MyDocuments), "");
-                        fileJson.UpdateJson(1, 0, "ConfigPath", pathReplaced);
+                        //string pathReplaced = _pathConfig.Replace(Environment.GetFolderPath(
+                        //    Environment.SpecialFolder.MyDocuments), "");
+                        fileJson.UpdateJson(1, 0, "ConfigPath", _pathConfig);
                     }
                 }
                 catch (SecurityException ex)
@@ -375,15 +375,15 @@ namespace PluginConfiguration
                     ExportExcelAndChangeValue(_pathConfig, _rawCommessa, _colValue);
                     // Modifica il file ConfigPath.json
                     Json fileJson = new Json();
-                    string pathDataCellReplaced = _pathDataCell.Replace(Environment.GetFolderPath(
-                            Environment.SpecialFolder.UserProfile), "");
-                    fileJson.UpdateJson(2, 1, "DataCellPath", pathDataCellReplaced);
-                    string pathBOLD_DistintaReplaced = _pathBOLD_Distinta.Replace(Environment.GetFolderPath(
-                            Environment.SpecialFolder.UserProfile), "");
-                    fileJson.UpdateJson(3, 2, "AbacoCellPath", pathBOLD_DistintaReplaced);
-                    string pathImagesReplaced = _pathImages.Replace(Environment.GetFolderPath(
-                            Environment.SpecialFolder.UserProfile), "");
-                    fileJson.UpdateJson(4, 3, "ImagesPath", pathImagesReplaced);
+                    //string pathDataCellReplaced = _pathDataCell.Replace(Environment.GetFolderPath(
+                    //        Environment.SpecialFolder.UserProfile), "");
+                    fileJson.UpdateJson(2, 1, "DataCellPath", _pathDataCell);
+                    //string pathBOLD_DistintaReplaced = _pathBOLD_Distinta.Replace(Environment.GetFolderPath(
+                    //        Environment.SpecialFolder.UserProfile), "");
+                    fileJson.UpdateJson(3, 2, "AbacoCellPath", _pathBOLD_Distinta);
+                    //string pathImagesReplaced = _pathImages.Replace(Environment.GetFolderPath(
+                    //        Environment.SpecialFolder.UserProfile), "");
+                    fileJson.UpdateJson(4, 3, "ImagesPath", _pathImages);
                 }
             }
         }
@@ -417,9 +417,9 @@ namespace PluginConfiguration
 
                     // Modifica il file ConfigPath.json
                     Json fileJson = new Json();
-                    string pathBOLD_DistintaReplaced = _pathBOLD_Distinta.Replace(Environment.GetFolderPath(
-                            Environment.SpecialFolder.UserProfile), "");
-                    fileJson.UpdateJson(3, 2, "AbacoCellPath", pathBOLD_DistintaReplaced);
+                    //string pathBOLD_DistintaReplaced = _pathBOLD_Distinta.Replace(Environment.GetFolderPath(
+                    //        Environment.SpecialFolder.UserProfile), "");
+                    fileJson.UpdateJson(3, 2, "AbacoCellPath", _pathBOLD_Distinta);
                 }
             }
         }
@@ -453,9 +453,9 @@ namespace PluginConfiguration
 
                     // Modifica il file ConfigPath.json
                     Json fileJson = new Json();
-                    string pathImagesReplaced = _pathImages.Replace(Environment.GetFolderPath(
-                            Environment.SpecialFolder.UserProfile), "");
-                    fileJson.UpdateJson(4, 3, "ImagesPath", pathImagesReplaced);
+                    //string pathImagesReplaced = _pathImages.Replace(Environment.GetFolderPath(
+                    //        Environment.SpecialFolder.UserProfile), "");
+                    fileJson.UpdateJson(4, 3, "ImagesPath", _pathImages);
                 }
             }
         }
@@ -567,7 +567,7 @@ namespace PluginConfiguration
                 Data singleItem = traduction.FirstOrDefault(x => x.Id == 1);
                 string pathExcelConfig = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + singleItem.Value;
 
-                // Esporta le modifiche su foglio Excel, del pathDataCell, di AbacoCells.xlsm e di Images
+                // Esporta le modifiche su foglio Excel, del pathDataCell, di DataSheets.xlsm e di Images
                 KillExcel();
                 _colValue = 6;
                 ExportExcelAndChangeValue(pathExcelConfig, _rawCommessa, _colValue);
